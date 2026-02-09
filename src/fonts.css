@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Noto Sans KR';
+    src: url('/fonts/Noto_Sans_KR.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+    font-family: 'Wanted Sans';
+    src: url('/fonts/Wanted_Sans.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
