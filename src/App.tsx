@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import {BrandLogo} from './Header.tsx';
 import {Navigator} from "./Navigator.tsx";
 import Main from './Main.tsx';
+import {useLanguage} from "./util/lang.ts";
+import dayjs from "dayjs";
 
 const Header = styled.header`
     display: flex;    
@@ -36,6 +38,9 @@ const Footer = styled.footer`
 `;
 
 function App() {
+    const lang = useLanguage();
+    dayjs.locale(lang);
+
     return (
         <>
             <Header>
@@ -46,6 +51,7 @@ function App() {
             </Header>
             <Main/>
             <Footer>
+
             </Footer>
         </>
     )

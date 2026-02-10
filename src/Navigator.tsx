@@ -4,16 +4,25 @@ import {Icon} from '@iconify/react';
 
 interface NavigationInfo extends Record<string, unknown> {
     href: string;
-    label: ReactNode;
+    title: ReactNode;
+    subtitle?: ReactNode;
 }
 
 const nav: NavigationInfo[] = [
     {
+        href: '#intro',
+        title: 'Intro'
+    },
+    {
         href: '#about',
-        label: 'About'
+        title: 'About',
+
     }, {
         href: '#timeline',
-        label: 'Timeline'
+        title: 'Timeline'
+    }, {
+        href: '#skills',
+        title: 'Skills'
     }
 ];
 
@@ -38,14 +47,16 @@ const NavModal = styled.dialog`
     
     top: 4rem;
     margin: 0 auto;
-    
+
+    animation: fade-in .375s forwards;
     
     @media (min-width: 720px){
         display: contents;
     }
     
-    ::backdrop {
+    &::backdrop {
         background-color: rgba(0, 0, 0, .75);
+        animation: inherit;
     }
 `;
 
@@ -78,9 +89,7 @@ const NavItem = styled.li`
 
     @media (min-width: 720px) {
         align-items: center;
-        &:first-child {
-            display: none;
-        }
+        
     }
 `;
 
@@ -90,7 +99,8 @@ const NavLink = styled.a`
     width: 100%;
     text-align: center;
     transition: color .375s ease-in-out;
-
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Mono', sans-serif;
+    
     &:visited {
         color: white;
     }
@@ -102,8 +112,7 @@ const NavLink = styled.a`
     
     &:before {
         color: lightgray;
-        content: '/';
-        font-family: 'Fira Code', sans-serif;
+        content: '#';
     }
     
     @media(min-width: 720px) {
@@ -154,8 +163,6 @@ export function Navigator() {
         modalRef.current?.close();
     }, []);
 
-
-
     return (
         <Nav>
             <ToggleButton onClick={onOpen}>
@@ -163,15 +170,10 @@ export function Navigator() {
             </ToggleButton>
             <NavModal ref={modalRef} onClick={onClose}>
                 <NavList>
-                    <NavItem>
-                        <NavLink href={'#intro'}>
-                            Intro
-                        </NavLink>
-                    </NavItem>
                     {
-                        nav.map(({href, label}) => (
+                        nav.map(({href, title}) => (
                             <NavItem key={href}>
-                                <NavLink href={href}>{label}</NavLink>
+                                <NavLink href={href}>{title}</NavLink>
                             </NavItem>
                         ))
                     }

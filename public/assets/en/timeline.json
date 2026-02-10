@@ -1,0 +1,52 @@
+[
+  {
+    "category": "education",
+    "title": "Suwon Technical High School",
+    "subtitle": "Electronics & Communications",
+    "logo": "/images/sths.png",
+    "period": {
+      "begin": "2017-03-02",
+      "end": "2020-01-02"
+    }
+  },
+  {
+    "category": "education",
+    "title": "Busan University of Foreign Studies",
+    "subtitle": "Computer Engineering, Japanese",
+    "logo": "/images/bufs.svg",
+    "period": {
+      "begin": "2020-03-02",
+      "end": "2026-02-20"
+    }
+  },
+  {
+    "category": "work",
+    "title": "BI Matrix Co., Ltd.",
+    "subtitle": "Quality Assurance · Short-term contract",
+    "period": {
+      "begin": "2022-12-05",
+      "end": "2022-12-09"
+    },
+    "description": ""
+  },
+  {
+    "category": "work",
+    "title": "EasyGeo Inc.",
+    "subtitle": "Windows App Dev · Short-term contract",
+    "period": {
+      "begin": "2024-06-24",
+      "end": "2024-08-14"
+    },
+    "description": ""
+  },
+  {
+    "category": "work",
+    "title": "Yesir Inc.",
+    "subtitle": "Quality Assurance · Short-term contract",
+    "period": {
+      "begin": "2025-07-21",
+      "end": "2025-08-13"
+    },
+    "description": ""
+  }
+]

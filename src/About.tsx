@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 import {SectionTitle} from "./Components.tsx";
 import {Icon} from '@iconify/react';
-import {useEffect, useState} from "react";
 import MarkdownContent from "./Markdown.tsx";
-import {getAsset} from "./util/assets.ts";
+import {useAsset} from "./util/assets.ts";
+import DayjsTime from "./DayjsTime.tsx";
+import useMessage from "./util/message.ts";
 
 
 const Section = styled.section`
@@ -32,14 +33,14 @@ const Essay = styled.article`
         }
     }
     
-    @media(min-width: 960px) {
+    @media(min-width: 1200px) {
         flex-direction: row;
         align-items: stretch;
         justify-content: space-between;
         
         > * {
             flex-basis: 30vw;
-            text-align: justify;
+            text-align: initial;
         }
     }
     
@@ -61,26 +62,15 @@ const Essay = styled.article`
 `;
 
 
-export default function Whoami() {
-    let [essay, setEssay] = useState<string[]>([]);
-
-
-    useEffect(() => {
-        getAsset('whoami-article.md')
-            .then(res => res.text())
-            .then(text => {
-                const articles = text.split(/-{3,}\r?\n/g);
-                setEssay(articles);
-                console.log(articles);
-            });
-    }, []);
+export default function About() {
+    const essay = useAsset('whoami-article.md', 'text');
 
     return (
         <Section id={'about'}>
             <SectionTitle>저는 이런 개발자에요</SectionTitle>
             <PersonalProfile/>
             <Essay>
-                {essay.map(((article, index) => (<MarkdownContent key={index}>{article}</MarkdownContent>)))}
+                {essay?.split(/-{3,}\r?\n/g)?.map(((article, index) => (<MarkdownContent key={index}>{article}</MarkdownContent>)))}
             </Essay>
         </Section>
     )
@@ -91,6 +81,11 @@ const Profile = styled.article`
     padding: 1rem .75rem;
     border-radius: .625rem;
     background-color: rgba(128, 128, 128, 25%);
+    
+    @media (min-width: 640px) {
+        align-self: center;
+        padding: 1rem 2rem;
+    }
 
     > ul {
         list-style: none;
@@ -116,9 +111,11 @@ const Profile = styled.article`
         }
 
 
-        @media (min-width: 720px) {
+        @media (min-width: 960px) {
             flex-direction: row;
-            justify-content: space-evenly;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
 
             > li {
                 flex-direction: column;
@@ -171,41 +168,36 @@ const PropertyValue = styled.span`
     }
 `;
 
-
-const profile = [
-      {
-        icon: 'bi:person-circle',
-        name: '이름',
-        value: '조석현'
-    },{
-        icon: 'mdi:birthday-cake-outline',
-        name: '생년월일',
-        value: <time dateTime={'2001-12-12'}>2001년&nbsp;12월&nbsp;12일</time>
-    },{
-        icon: 'mdi:github',
-        name: 'GitHub',
-        value: <a href={'https://github.com/dowol'}>github.com/dowol</a>
-    },{
-        icon: 'mdi:alternate-email',
-        name: '이메일',
-        value: <a href={'mailto:dowol.dev@gmail.com'}>dowol.dev@gmail.com</a>
-    }
-]
-
 function PersonalProfile() {
+    const message = useMessage();
+    const profile = useAsset('profile.json', 'json');
+
     return (
         <Profile id={'profile'}>
             <ul>
-                {
-                    profile.map(({icon, name, value}) => (
-                        <li key={icon}>
-                            <PropertyKey><Icon {...{icon}}/>&nbsp;{name}</PropertyKey>
-                            <PropertyValue>{value}</PropertyValue>
-                        </li>
-                    ))
-                }
+                <li>
+                    <PropertyKey><Icon icon={'bi:person-circle'}/>&nbsp;{message?.name ?? 'Name'}</PropertyKey>
+                    <PropertyValue>{profile?.name}</PropertyValue>
+                </li>
+                <li>
+                    <PropertyKey><Icon icon={'mdi:birthday-cake-outline'}/>&nbsp;{message?.birthday ?? 'Name'}</PropertyKey>
+                    <PropertyValue>{profile && <DayjsTime dateTime={profile?.birthday} format={'LL'}/>}</PropertyValue>
+                </li>
+                <li>
+                    <PropertyKey><Icon icon={'mdi:github'}/>&nbsp;{message?.github ?? 'Name'}</PropertyKey>
+                    <PropertyValue><a href={profile?.github}>{profile && getShortenedURL(profile.github)}</a></PropertyValue>
+                </li>
+                <li>
+                    <PropertyKey><Icon icon={'mdi:alternate-email'}/>&nbsp;{message?.email ?? 'Name'}</PropertyKey>
+                    <PropertyValue><a href={profile?.email}>{profile && getShortenedURL(profile.email)}</a></PropertyValue>
+                </li>
             </ul>
         </Profile>
 
     );
+}
+
+function getShortenedURL(href: string): string {
+    const url = new URL(href);
+    return url.host + url.pathname + url.search;
 }

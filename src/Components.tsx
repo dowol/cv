@@ -3,7 +3,7 @@ import type {PropsWithChildren} from "react";
 
 const Title = styled.h2`
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.625rem;
     font-weight: 400;
     
     

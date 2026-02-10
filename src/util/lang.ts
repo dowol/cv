@@ -1,16 +1,19 @@
 import Cookie from 'js-cookie';
+import {useMemo} from "react";
 
 const html = document.querySelector('html') as HTMLHtmlElement;
 
-export const supported = Object.freeze(['en', 'ko', 'ja']);
+export const supportedLanguages = ['en', 'ko', 'ja', 'fr'] as const;
 
-function fallback(lang: string): string | undefined {
+export type SupportedLanguages = typeof supportedLanguages[number];
+
+function fallback(lang: string): SupportedLanguages | undefined {
     lang = lang.toLowerCase();
-    return supported.find(l => lang === l || lang.startsWith(l + '-')) || undefined;
+    return supportedLanguages.find(l => lang === l || lang.startsWith(l + '-')) || undefined;
 }
 
 export function detectLanguage() {
-    let result: string | undefined;
+    let result: SupportedLanguages | undefined;
 
     // STEP 1. Detect language request from URL SearchParams
     const query = new URLSearchParams(window.location.search);
@@ -28,7 +31,7 @@ export function detectLanguage() {
 
     // STEP 3. Detect language from browser settings
     if (!result) {
-        for (const lang of supported) {
+        for (const lang of supportedLanguages) {
             if (navigator.languages.includes(lang)) {
                 result = lang;
                 break;
@@ -36,9 +39,9 @@ export function detectLanguage() {
         }
     }
 
-    html.lang = result || supported[0];
+    html.lang = result || supportedLanguages[0];
 }
 
-export function useLanguage(): string {
-    return html?.lang ?? supported[0];
+export function useLanguage(): SupportedLanguages {
+    return useMemo<SupportedLanguages>(() => html?.lang as SupportedLanguages ?? supportedLanguages[0], []);
 }

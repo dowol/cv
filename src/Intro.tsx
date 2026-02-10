@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import MarkdownContent from "./Markdown.tsx";
-import {useEffect, useState} from "react";
-import {getAsset} from "./util/assets";
+import {useAsset} from "./util/assets";
 import {useLanguage} from "./util/lang";
 import {Icon} from '@iconify/react';
+import useMessage from "./util/message.ts";
 
 const Section = styled.section`
     font-family: 'Wanted Sans', 'Noto Sans KR', sans-serif;
@@ -26,7 +26,16 @@ const Profile = styled.article`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+    margin-top: .25rem;
+    
+    
+    @media(min-width: 480px) {
+        margin-top: 2rem;
+    }
+    
+    @media(min-width: 720px) {
+        margin-top: 0;
+    }
 `;
 
 const ProfileImage = styled.img`
@@ -53,6 +62,8 @@ const Greetings = styled.article`
         font-weight: 400;
         text-align: center;
         line-height: 1.25;
+        
+        text-transform: uppercase;
 
         @media (min-width: 480px) {
             font-size: 3rem;
@@ -77,7 +88,6 @@ const Greetings = styled.article`
 
     .markdown-content {
         font-size: 1rem;
-        word-break: break-all;
         text-align: initial;
 
         @media (min-width: 480px) {
@@ -96,13 +106,7 @@ const Greetings = styled.article`
 `;
 
 export default function Intro() {
-    const [introduction, setIntroduction] = useState('');
-
-    useEffect(() => {
-        getAsset('intro-greetings.md')
-            .then(res => res.text())
-            .then(text => setIntroduction(text));
-    }, []);
+    const introduction = useAsset('intro-greetings.md', 'text');
 
     return (
         <Section id={'intro'}>
@@ -124,8 +128,14 @@ function GreetingMessage() {
         case 'ko':
             return (<h1><span>안녕하세요</span> <span>개발자 <strong>도월</strong>입니다</span></h1>);
 
+        case 'fr':
+            return (<h1><span>Enchanté</span> <span>Je suis <strong>Dowol</strong> <br/>le développeur</span></h1>);
+
+        case 'ja':
+            return (<h1><span>はじめまして</span> <span>開発者の<strong>ドウオル</strong>と<br/>申します</span></h1>);
+
         default:
-            return (<h1><span>I am <strong>Dowol</strong></span> <span>the Developer</span></h1>);
+            return (<h1><span>Hello</span> <span>I am <strong>Dowol</strong> <br/>the Developer</span></h1>);
     }
 }
 
@@ -166,11 +176,11 @@ const ActionItem = styled.a`
 
     border-bottom: 1px solid gray;
 
-    &:first-child {
-        border-top: 1px solid gray;
+    &[href=""], &:not([href]) {
+        color: gray;
+        text-decoration-line: line-through;
     }
-
-
+    
     @media (min-width: 480px) {
         flex-direction: column;
         justify-content: center;
@@ -181,9 +191,9 @@ const ActionItem = styled.a`
         padding: 0;
 
         border: none;
-        &:first-child {
-            border-top: none;
-        }
+        //&:first-child {
+        //    border-top: none;
+        //}
     }
 
 
@@ -217,28 +227,31 @@ const QuickAccess = styled.div`
 `;
 
 const ActionLabel = styled.span`
+    text-align: center;
 `;
 
 function QuickActions() {
+    const message = useMessage();
+
     return (
         <QuickAccess>
-            <h6>Quick Access</h6>
+            <h6 translate={'no'} className={'notranslate'}>Quick Access</h6>
             <Nav>
                 <ActionItem href={'#about'}>
                     <Icon icon={'mdi:person-circle'}/>
-                    <ActionLabel>프로필</ActionLabel>
+                    <ActionLabel>{message?.profile}</ActionLabel>
                 </ActionItem>
                 <ActionItem href={'https://github.com/dowol'}>
                     <Icon icon={'mdi:github'}/>
-                    <ActionLabel>GitHub</ActionLabel>
+                    <ActionLabel>{message?.github}</ActionLabel>
+                </ActionItem>
+                <ActionItem href={'mailto:dowol.dev@gmail.com'}>
+                    <Icon icon={'mdi:email'}/>
+                    <ActionLabel>{message?.email}</ActionLabel>
                 </ActionItem>
                 <ActionItem href={undefined/*getAssetURL('cv.pdf')*/}>
                     <Icon icon={'mdi:file-pdf'}/>
-                    <ActionLabel>PDF 이력서</ActionLabel>
-                </ActionItem>
-                <ActionItem>
-                    <Icon icon={'mdi:email'}/>
-                    <ActionLabel>이메일</ActionLabel>
+                    <ActionLabel>{message?.pdf}</ActionLabel>
                 </ActionItem>
             </Nav>
         </QuickAccess>

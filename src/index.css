@@ -44,7 +44,11 @@ body {
     margin: 0;
     display: flex;
     place-items: center;
-    background: linear-gradient(160deg, #121212, #121212 10%, #202830 40%, #202830 60%, #121212 90%);
+    /*background: linear-gradient(165deg, #121212,*/
+    /*#121212 5%, #202830 20%, #202830 30%, #121212 45%,*/
+    /*#121212 55%, #202830 70%, #202830 80%, #121212 95%); */
+    background: repeating-linear-gradient(160deg, #121212,
+        #121212 20vh, #202830 100vh, #202830 140vh, #121212 220vh);
 
 }
 
@@ -63,10 +67,6 @@ main * {
     scroll-margin-top: 4rem;
 }
 
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-}
 
 button {
     border-radius: 8px;
@@ -91,17 +91,47 @@ button:focus-visible {
 
 
 @keyframes fade-in {
-    0% {
-        opacity: 0
-    }
+    from { opacity: 0 }
+    to { opacity: 1; }
+}
 
-    100% {
-        opacity: 1;
-    }
+@keyframes fade-out {
+    from { opacity: 1; }
+    to {opacity: 0; }
 }
 
 article.markdown-content {
+    & p {
+        text-indent: .5em;
+    }
+
     & em {
         font-style: oblique 15deg;
     }
+}
+
+
+h1 { font-size: 2rem; line-height: 1.125; }
+h2 { font-size: 1.625rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+@media (min-width: 480px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2.25rem; }
+    h3 { font-size: 2rem; }
+    h4 { font-size: 1.75rem; }
+    h5 { font-size: 1.5rem; }
+    h6 { font-size: 1.25rem; }
+}
+
+@media (min-width: 720px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 2.25rem; }
+    h4 { font-size: 2rem; }
+    h5 { font-size: 1.625rem; }
+    h6 { font-size: 1.25rem; }
 }

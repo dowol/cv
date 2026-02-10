@@ -1,6 +1,18 @@
 {
   "profile": "Profile",
   "github": "GitHub",
-  "pdf": "PDF Résumé",
-  "email": "E-mail"
+  "pdf": "PDF CV",
+  "email": "E-mail",
+
+  "name": "Name",
+  "birthday": "Birthday",
+
+
+
+  "begin_edu": "Entered on",
+  "end_edu": "Graduated on",
+  "current_edu": "",
+  "begin_work": "Joined on",
+  "end_work": "Resigned on",
+  "current_work": ""
 }

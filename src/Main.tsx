@@ -1,12 +1,13 @@
 import Intro from "./Intro.tsx";
-import Whoami from "./Whoami.tsx";
+import About from "./About.tsx";
 import Timeline from "./Timeline.tsx";
 import styled from "@emotion/styled";
+import Skills from "./Skills.tsx";
 
 const Contents = styled.main`
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 1rem;
     
     & > section {
         padding: 0 1rem;
@@ -19,8 +20,9 @@ export default function Main() {
     return (
         <Contents>
             <Intro/>
-            <Whoami/>
+            <About/>
             <Timeline/>
+            <Skills/>
         </Contents>
     )
 }
