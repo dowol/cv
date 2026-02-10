@@ -2,8 +2,9 @@ import {defineConfig, type ServerOptions} from 'vite';
 import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig(({mode}) => {
-    const server: ServerOptions | undefined =
-        mode === 'development' ? {
+    const DEV = mode === 'development';
+
+    const server: ServerOptions | undefined = DEV ? {
             // Configure backend proxy for dev mode
             proxy: {
                 '/api': {
@@ -19,9 +20,10 @@ export default defineConfig(({mode}) => {
     } : undefined;
 
     return {
+        base: DEV ? '/' : '/cv/',
         build: {
             // Generate sourcemaps when in dev mode
-            sourcemap: mode === 'development'
+            sourcemap: DEV
         },
         plugins: [react()],
         server, rollupOptions
