@@ -7,12 +7,13 @@ const Title = styled.h2`
     font-weight: 400;
     
     
+    
     & > span {
         color: white;
         
         &:before, &:after {
             color: #aaa;
-            font-family: 'Fira Code', monospace;
+            font-family: 'Fira Mono', monospace;
         }
         
         &:before {

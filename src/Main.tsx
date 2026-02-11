@@ -13,7 +13,6 @@ const Contents = styled.main`
         padding: 0 1rem;
         min-height: calc(100vh - 4rem);
     }
-    
 `;
 
 export default function Main() {

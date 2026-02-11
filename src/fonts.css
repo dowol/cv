@@ -1,9 +1,18 @@
+/*
 @font-face {
     font-family: 'Noto Sans KR';
     src: url('/fonts/Noto_Sans_KR.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
-    unicode-range: U+AC00-D7A3;
+}
+*/
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('/fonts/Noto_Sans_JP.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -11,4 +20,13 @@
     src: url('/fonts/Wanted_Sans.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fira Mono';
+    src: url('/fonts/Fira_Mono_Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }

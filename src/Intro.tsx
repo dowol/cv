@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import MarkdownContent from "./Markdown.tsx";
 import {useAsset} from "./util/assets";
-import {useLanguage} from "./util/lang";
-import {Icon} from '@iconify/react';
 import useMessage from "./util/message.ts";
+import GreetingMessage from "./GreetingMessage.tsx";
 
 const Section = styled.section`
     font-family: 'Wanted Sans', 'Noto Sans KR', sans-serif;
@@ -51,41 +50,6 @@ const Greetings = styled.article`
     flex-flow: column nowrap;
     max-width: 640px;
 
-
-    h1 {
-        display: flex;
-        flex-flow: column nowrap;
-
-        margin: 0;
-
-        font-size: 2rem;
-        font-weight: 400;
-        text-align: center;
-        line-height: 1.25;
-        
-        text-transform: uppercase;
-
-        @media (min-width: 480px) {
-            font-size: 3rem;
-        }
-
-        @media (min-width: 720px) {
-            text-align: right;
-
-        }
-
-        @media (min-width: 840px) {
-            font-size: 4rem;
-
-        }
-
-        animation: fade-in .75s ease-out forwards;
-
-        strong {
-            font-size: 1.125em;
-        }
-    }
-
     .markdown-content {
         font-size: 1rem;
         text-align: center;
@@ -95,7 +59,7 @@ const Greetings = styled.article`
         }
 
         @media (min-width: 720px) {
-            text-align: right;
+            text-align: left;
             margin-right: .5rem;
         }
 
@@ -126,23 +90,6 @@ export default function Intro() {
     )
 }
 
-function GreetingMessage() {
-    const lang = useLanguage();
-    switch (lang) {
-        case 'ko':
-            return (<h1><span>안녕하세요</span> <span>개발자 <strong>도월</strong>입니다</span></h1>);
-
-        case 'fr':
-            return (<h1><span>Enchanté</span> <span>Je suis <strong>Dowol</strong> <br/>le développeur</span></h1>);
-
-        case 'ja':
-            return (<h1><span>はじめまして</span> <span>開発者の<strong>ドウオル</strong>と<br/>申します</span></h1>);
-
-        default:
-            return (<h1><span>Hello</span> <span>I am <strong>Dowol</strong> <br/>the Developer</span></h1>);
-    }
-}
-
 const Nav = styled.nav`
     display: flex;
     flex-direction: column;
@@ -152,13 +99,9 @@ const Nav = styled.nav`
 
     @media (min-width: 480px) {
         flex-direction: row;
-        gap: .5rem;
         padding: 0;
     }
 
-    & a {
-
-    }
 `;
 
 const ActionItem = styled.a`
@@ -173,31 +116,37 @@ const ActionItem = styled.a`
     transition: color .375s ease-in-out;
 
     &:hover {
-        color: #ffcb05;
+        color: var(--color-indigo);
     }
 
     padding: .5rem;
 
     border-bottom: 1px solid gray;
+    
+    & .bi {
+        font-size: 2em;
+    }
 
     &[href=""], &:not([href]) {
-        color: gray;
-        text-decoration-line: line-through;
+        display: none;
+        // color: gray;
+        // text-decoration-line: line-through;
     }
     
     @media (min-width: 480px) {
         flex-direction: column;
         justify-content: center;
 
-        width: 5rem;
+        width: 6rem;
         height: 5rem;
         gap: 0;
         padding: 0;
 
         border: none;
-        //&:first-child {
-        //    border-top: none;
-        //}
+    }
+    
+    & span {
+        width: 100%;
     }
 
 
@@ -223,6 +172,7 @@ const QuickAccess = styled.div`
         background-color: rgba(128, 128, 128, .25);
         padding: .125rem .5rem;
         border-radius: .375rem;
+        text-transform: uppercase;
     }
     
     @media(min-width: 480px) {
@@ -242,19 +192,19 @@ function QuickActions() {
             <h6 translate={'no'} className={'notranslate'}>Quick Access</h6>
             <Nav>
                 <ActionItem href={'#about'}>
-                    <Icon icon={'mdi:person-circle'}/>
+                    <i className={'bi bi-person-circle'}></i>
                     <ActionLabel>{message?.profile}</ActionLabel>
                 </ActionItem>
                 <ActionItem href={'https://github.com/dowol'}>
-                    <Icon icon={'mdi:github'}/>
+                    <i className={'bi bi-github'}></i>
                     <ActionLabel>{message?.github}</ActionLabel>
                 </ActionItem>
                 <ActionItem href={'mailto:dowol.dev@gmail.com'}>
-                    <Icon icon={'mdi:email'}/>
+                    <i className={'bi bi-envelope-at'}></i>
                     <ActionLabel>{message?.email}</ActionLabel>
                 </ActionItem>
                 <ActionItem href={undefined/*getAssetURL('cv.pdf')*/}>
-                    <Icon icon={'mdi:file-pdf'}/>
+                    <i className={'bi bi-file-earmark-pdf'}></i>
                     <ActionLabel>{message?.pdf}</ActionLabel>
                 </ActionItem>
             </Nav>

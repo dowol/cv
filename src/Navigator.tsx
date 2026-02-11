@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import {type ReactNode, useCallback, useRef} from "react";
-import {Icon} from '@iconify/react';
 
 interface NavigationInfo extends Record<string, unknown> {
     href: string;
@@ -11,7 +10,7 @@ interface NavigationInfo extends Record<string, unknown> {
 const nav: NavigationInfo[] = [
     {
         href: '#intro',
-        title: 'Intro'
+        title: 'Intro',
     },
     {
         href: '#about',
@@ -36,11 +35,18 @@ const Nav = styled.nav`
     
     @media (min-width: 720px) {
         flex-direction: row;
-
+    }
+    
+    i.bi {
+        font-size: 2em;
+    }
+    
+    a:hover {
+        text-decoration: none;
     }
 `;
 
-const NavModal = styled.dialog`
+const AliasesModal = styled.dialog`
     background-color: #1a1a1a;
     border: none;
     border-radius: .375rem;
@@ -106,7 +112,7 @@ const NavLink = styled.a`
     }
     
     &:hover {
-        color: #ffcb05;
+        color: var(--color-indigo);
     }
 
     
@@ -122,7 +128,7 @@ const NavLink = styled.a`
     }
 `;
 
-const ToggleButton = styled.button`
+const ToggleAliasesButton = styled.button`
     width: 48px;
     height: 48px;
     background: transparent;
@@ -149,36 +155,164 @@ const ToggleButton = styled.button`
     @media (min-width: 720px) {
         display: none;
     }
-`
+`;
+
+const LanguagesModal = styled.dialog`
+    animation: fade-in .375s forwards;
+    background-color: #1a1a1a;
+    border: none;
+    border-radius: .375rem;
+    color: inherit;
+    
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, .75);
+        animation: inherit;
+    }
+    
+    & h6 {
+        margin: 0 1rem 1rem 1rem;
+        font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
+        
+    }
+`;
+
+const LanguageList = styled.ul`
+    list-style: none;
+    
+    margin: 0;
+    padding: 0;
+    
+    display: flex;
+    flex-direction: column;
+    
+    @media (min-width: 720px) {
+        flex-direction: row;
+        column-gap: 1rem;
+    }
+    
+`;
+
+const LanguageItem = styled.li`
+    display: flex;
+`;
+
+const LanguageLink = styled.a`
+    text-align: center;
+    color: white;
+    transition: color .25s ease-in-out;
+    padding: .5rem;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    font-size: 1.25rem;
+    
+    &:hover {
+        color: var(--color-indigo);
+    }
+    
+    & > img {
+        height: 1.25em;
+    }
+`;
+
+const ToggleLanguagesButton = styled.button`
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & .iconify {
+        font-size: 2rem;
+    }
+
+    color: inherit;
+    border-radius: 24px;
+
+    &:hover {
+        border-color: white;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+`;
 
 
 export function Navigator() {
-    const modalRef = useRef<HTMLDialogElement>(null);
+    const aliasesModalRef = useRef<HTMLDialogElement>(null);
+    const languagesModalRef = useRef<HTMLDialogElement>(null);
 
-    const onOpen = useCallback(() => {
-        modalRef.current?.showModal();
+    const onOpenAliases = useCallback(() => {
+        aliasesModalRef.current?.showModal();
     }, []);
 
-    const onClose = useCallback(() => {
-        modalRef.current?.close();
+    const onCloseAliases = useCallback(() => {
+        aliasesModalRef.current?.close();
+    }, []);
+
+    const onOpenLanguages = useCallback(() => {
+        languagesModalRef.current?.showModal();
+    }, []);
+
+    const onCloseLanguages = useCallback(() => {
+        languagesModalRef.current?.close();
     }, []);
 
     return (
         <Nav>
-            <ToggleButton onClick={onOpen}>
-                <Icon icon={'bi:list'}/>
-            </ToggleButton>
-            <NavModal ref={modalRef} onClick={onClose}>
+            <ToggleLanguagesButton onClick={onOpenLanguages}>
+                <i className={'bi bi-translate'}/>
+            </ToggleLanguagesButton>
+            <ToggleAliasesButton onClick={onOpenAliases}>
+                <i className={'bi bi-list'}/>
+            </ToggleAliasesButton>
+            <AliasesModal ref={aliasesModalRef} onClick={onCloseAliases}>
                 <NavList>
                     {
                         nav.map(({href, title}) => (
                             <NavItem key={href}>
-                                <NavLink href={href}>{title}</NavLink>
+                                <NavLink href={href} translate={'no'} className={'notranslate'}>
+                                    {title}
+                                </NavLink>
                             </NavItem>
                         ))
                     }
                 </NavList>
-            </NavModal>
+            </AliasesModal>
+            <LanguagesModal ref={languagesModalRef} onClick={onCloseLanguages}>
+                <h6>Choose your language</h6>
+                <LanguageList translate={'no'} className={'notranslate'}>
+                    <LanguageItem>
+                        <LanguageLink href={'?lang=ko'}>
+                            <img src={'/images/lang/ko.svg'}/> 한국어 <span></span>
+                        </LanguageLink>
+                    </LanguageItem>
+                    <LanguageItem>
+                        <LanguageLink href={'?lang=en'}>
+                            <img src={'/images/lang/en.svg'}/> English <span></span>
+                        </LanguageLink>
+                    </LanguageItem>
+                    <LanguageItem>
+                        <LanguageLink href={'?lang=ja'}>
+                            <img src={'/images/lang/ja.svg'}/> 日本語 <span></span>
+                        </LanguageLink>
+                    </LanguageItem>
+                    <LanguageItem>
+                        <LanguageLink href={'?lang=fr'}>
+                            <img src={'/images/lang/fr.svg'}/> français <span></span>
+                        </LanguageLink>
+                    </LanguageItem>
+                </LanguageList>
+            </LanguagesModal>
         </Nav>
     )
 }
