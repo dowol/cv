@@ -182,10 +182,10 @@ export default function Timeline() {
 
     return (
         <Section id={'timeline'}>
-            <SectionTitle>저는 이렇게 살아왔어요</SectionTitle>
+            <SectionTitle>{message?.title_timeline}</SectionTitle>
             <TimelineArticle>
                 <EducationHistory>
-                    <h3>🎓 학력</h3>
+                    <h3>🎓 {message?.education}</h3>
                     {
                         timeline?.filter(i => i.category === 'education').map(i => (
                             <article key={i.title}>
@@ -204,7 +204,7 @@ export default function Timeline() {
                     }
                 </EducationHistory>
                 <WorkHistory>
-                    <h3>🛠️ 경력</h3>
+                    <h3>🛠️ {message?.career}</h3>
                     {
                         timeline?.filter(i => i.category === 'work').map(i => (
                             <article key={i.title}>

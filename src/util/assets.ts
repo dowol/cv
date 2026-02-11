@@ -33,7 +33,10 @@ export function useAsset<T extends AssetsBodyType>(path: string, type: BodyType 
 }
 
 export function getAssetURL(path: string){
-    const lang = document.querySelector('html')?.lang || 'en';
+    const isInvariant = path.startsWith('@')
+    const lang = isInvariant ? '' : document.querySelector('html')?.lang || 'en';
+    if(isInvariant) path = path.substring(1);
+
     return (import.meta.env.DEV
         ? `/assets/${lang}/${path}`.replace(/\/{2,}/g, '/')
         : `https://raw.githubusercontent.com` + `/dowol/dowol/master/cv/${lang}/${path}`.replace(/\/{2,}/g, '/'));

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import {SectionTitle} from "./Components.tsx";
 import {useAsset} from "./util/assets.ts";
+import useMessage from "./util/message.ts";
 
 const Section = styled.section`
     display: flex;
@@ -8,9 +9,11 @@ const Section = styled.section`
 `;
 
 export default function Skills(){
+    const message = useMessage();
+
     return (
         <Section id={'skills'}>
-            <SectionTitle>저는 이런 것을 다뤄요</SectionTitle>
+            <SectionTitle>{message?.title_skills}</SectionTitle>
             <SkillsArticle/>
         </Section>
     )
@@ -128,7 +131,7 @@ function SkillsItem({category, name, icon} : SkillsInfo) {
 
 function SkillsArticle(){
 
-    const skills = useAsset('skills.json', 'json') as SkillsInfo[];
+    const skills = useAsset('@skills.json', 'json') as SkillsInfo[];
 
 
     return (

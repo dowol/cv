@@ -40,6 +40,10 @@ const Nav = styled.nav`
     i.bi {
         font-size: 2em;
     }
+    
+    a:hover {
+        text-decoration: none;
+    }
 `;
 
 const AliasesModal = styled.dialog`

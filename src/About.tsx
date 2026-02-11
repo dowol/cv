@@ -63,10 +63,11 @@ const Essay = styled.article`
 
 export default function About() {
     const essay = useAsset('whoami-article.md', 'text');
+    const message = useMessage();
 
     return (
         <Section id={'about'}>
-            <SectionTitle>저는 이런 개발자에요</SectionTitle>
+            <SectionTitle>{message?.title_about}</SectionTitle>
             <PersonalProfile/>
             <Essay>
                 {essay?.split(/-{3,}\r?\n/g)?.map(((article, index) => (<MarkdownContent key={index}>{article}</MarkdownContent>)))}

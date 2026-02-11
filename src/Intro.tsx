@@ -59,7 +59,7 @@ const Greetings = styled.article`
         }
 
         @media (min-width: 720px) {
-            text-align: right;
+            text-align: left;
             margin-right: .5rem;
         }
 

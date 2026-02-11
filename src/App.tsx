@@ -35,7 +35,7 @@ const Header = styled.header`
 
 
 const Footer = styled.footer`
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: space-around;
     
