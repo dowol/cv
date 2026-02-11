@@ -29,6 +29,8 @@ const Article = styled.article`
     @media(min-width: 960px) {
         display: grid;
         grid-template-columns: 2fr 3fr 3fr;
+        max-width: 1000px;
+        margin: 0 auto;
     }
 `;
 

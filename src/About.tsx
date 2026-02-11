@@ -22,7 +22,7 @@ const Essay = styled.article`
     row-gap: 1.5rem;
     
     > * {
-        text-align: center;
+        text-align: left;
         width: min(600px, calc(100vw - 4rem));
     }
     
@@ -39,7 +39,6 @@ const Essay = styled.article`
         
         > * {
             flex-basis: 30vw;
-            text-align: initial;
         }
     }
     
