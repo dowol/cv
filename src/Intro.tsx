@@ -52,14 +52,13 @@ const Greetings = styled.article`
 
     .markdown-content {
         font-size: 1rem;
-        text-align: center;
+        text-align: left;
 
         @media (min-width: 480px) {
             font-size: 1.25rem;
         }
 
         @media (min-width: 720px) {
-            text-align: left;
             margin-right: .5rem;
         }
 
