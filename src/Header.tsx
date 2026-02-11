@@ -22,22 +22,25 @@ const LogoLink = styled.a`
 `;
 
 const SubDomain = styled.span`
-    color: #FFCB05;
+    color: var(--color-gold);
 `;
 
 const RootDomain = styled.span`
-    color: #A07F78;
+    color: var(--color-brown);
 `;
 
 const TopLevelDomain = styled.span`
-    color: #6772A1;
+    color: var(--color-indigo);
 `;
 
 export function BrandLogo(){
     const lang = useLanguage();
+    const query = new URLSearchParams(window.location.search);
+
+
 
     return (
-        <LogoLink href={'/?lang=' + lang}>
+        <LogoLink translate={'no'} className={'notranslate'} href={query.has('lang') ? '/?lang=' + lang : '/'}>
             //<SubDomain>cv</SubDomain>.<RootDomain>dowol</RootDomain>.<TopLevelDomain>dev</TopLevelDomain>/
         </LogoLink>
     );

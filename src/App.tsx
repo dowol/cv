@@ -4,6 +4,7 @@ import {Navigator} from "./Navigator.tsx";
 import Main from './Main.tsx';
 import {useLanguage} from "./util/lang.ts";
 import dayjs from "dayjs";
+import {Copyright} from "./Footer.tsx";
 
 const Header = styled.header`
     display: flex;    
@@ -34,7 +35,14 @@ const Header = styled.header`
 
 
 const Footer = styled.footer`
-    display: flex;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    
+    height: 4rem;
+    padding: .5rem 1rem;
+    
+    color: #aaa;
 `;
 
 function App() {
@@ -51,7 +59,7 @@ function App() {
             </Header>
             <Main/>
             <Footer>
-
+                <Copyright/>
             </Footer>
         </>
     )

@@ -18,10 +18,10 @@ const TimelineArticle = styled.article`
     margin: 0 auto;
     max-width: 600px;
 
-    @media (min-width: 1200px) {
+    @media (min-width: 960px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        max-width: 1024px;
+        max-width: min(calc(100vw - 2rem), 1280px);
     }
 
     & > section {
@@ -33,6 +33,10 @@ const TimelineArticle = styled.article`
             padding: 1rem;
             border-radius: .625rem;
             background-color: rgba(255, 255, 255, .125);
+            
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         h3, h4, h5, h6 {
@@ -58,15 +62,21 @@ const TimelineArticle = styled.article`
                 font-size: 1.75rem;
             }
 
-            small {
-                font-size: .75em;
-                color: lightgray;
-            }
 
-            > div {
+            & > div {
                 display: flex;
                 flex-flow: column nowrap;
-                align-items: baseline;
+                align-items: stretch;
+                
+                flex-grow: 1;
+                
+                & a {
+                    color: inherit;
+                    
+                    &:hover {
+                        text-decoration: 1px solid underline;
+                    }
+                }
 
             }
         }
@@ -76,12 +86,27 @@ const TimelineArticle = styled.article`
             vertical-align: middle;
 
         }
+
+        small {
+            display: block;
+            color: #bbb;
+            font-size: 1rem;
+            
+            @media(min-width: 720px) {
+                font-size: 1.25rem;
+            }
+            
+            &:before {
+                content: '-';
+                margin-inline-end: .5em;
+            }
+        }
     }
 
 `;
 
 const EducationHistory = styled.section`
-
+    
 `;
 
 const WorkHistory = styled.section`
@@ -141,6 +166,7 @@ interface TimelineInfo {
     title: string;
     subtitle?: string;
     logo?: string;
+    url?: string;
     period: {
         begin: string;
         end: string;
@@ -166,10 +192,10 @@ export default function Timeline() {
                                 <h4>
                                     <img src={i.logo}/>
                                     <div>
-                                        {i.title}&nbsp;
-                                        <small>{i.subtitle}</small>
+                                        <a href={i.url}>{i.title}&nbsp;</a>
                                     </div>
                                 </h4>
+                                <small>{i.subtitle}</small>
                                 <Period begin={i.period.begin} end={i.period.end} currentModifier={message?.current_edu}
                                         beginModifier={message?.begin_edu} endModifier={message?.end_edu}/>
                                 {i.description && (<MarkdownContent>{i.description}</MarkdownContent>)}
@@ -185,7 +211,7 @@ export default function Timeline() {
                                 <h4>
                                     <img src={i.logo}/>
                                     <div>
-                                        {i.title}&nbsp;
+                                        <a href={i.url}>{i.title}&nbsp;</a>
                                         <small>{i.subtitle}</small>
                                     </div>
                                 </h4>

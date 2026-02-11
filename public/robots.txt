@@ -1,3 +1,7 @@
 User-agent: *
 Disallow: /
+Allow: /$
+Allow: /assets/*.js
+Allow: /assets/*.css
 
+Sitemap: https://cv.dowol.dev/sitemap.xml

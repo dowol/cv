@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import {SectionTitle} from "./Components.tsx";
-import {Icon} from '@iconify/react';
 import MarkdownContent from "./Markdown.tsx";
 import {useAsset} from "./util/assets.ts";
 import DayjsTime from "./DayjsTime.tsx";
@@ -147,7 +146,7 @@ const PropertyKey = styled.span`
 
 const PropertyValue = styled.span`
     font-weight: 600;
-    margin-left: calc(.75rem - 1px);
+    margin-left: calc(.5rem - 1px);
     border-left: 1px solid gray;
     padding-left: 1rem;
 
@@ -166,6 +165,10 @@ const PropertyValue = styled.span`
             text-decoration: underline;
         }
     }
+    
+    :lang(ja){
+        font-weight: 200;
+    }
 `;
 
 function PersonalProfile() {
@@ -176,19 +179,19 @@ function PersonalProfile() {
         <Profile id={'profile'}>
             <ul>
                 <li>
-                    <PropertyKey><Icon icon={'bi:person-circle'}/>&nbsp;{message?.name ?? 'Name'}</PropertyKey>
+                    <PropertyKey><i className={'bi bi-person-circle'}></i>&nbsp;{message?.name ?? 'Name'}</PropertyKey>
                     <PropertyValue>{profile?.name}</PropertyValue>
                 </li>
                 <li>
-                    <PropertyKey><Icon icon={'mdi:birthday-cake-outline'}/>&nbsp;{message?.birthday ?? 'Name'}</PropertyKey>
+                    <PropertyKey><i className={'bi bi-cake'}></i>&nbsp;{message?.birthday ?? 'Name'}</PropertyKey>
                     <PropertyValue>{profile && <DayjsTime dateTime={profile?.birthday} format={'LL'}/>}</PropertyValue>
                 </li>
                 <li>
-                    <PropertyKey><Icon icon={'mdi:github'}/>&nbsp;{message?.github ?? 'Name'}</PropertyKey>
+                    <PropertyKey><i className={'bi bi-github'}></i>&nbsp;{message?.github ?? 'Name'}</PropertyKey>
                     <PropertyValue><a href={profile?.github}>{profile && getShortenedURL(profile.github)}</a></PropertyValue>
                 </li>
                 <li>
-                    <PropertyKey><Icon icon={'mdi:alternate-email'}/>&nbsp;{message?.email ?? 'Name'}</PropertyKey>
+                    <PropertyKey><i className={'bi bi-envelope-at'}></i>&nbsp;{message?.email ?? 'Name'}</PropertyKey>
                     <PropertyValue><a href={profile?.email}>{profile && getShortenedURL(profile.email)}</a></PropertyValue>
                 </li>
             </ul>

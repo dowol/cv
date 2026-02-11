@@ -19,6 +19,14 @@ export function detectLanguage() {
     const query = new URLSearchParams(window.location.search);
     if (query.has('lang')) {
         result = fallback(query.get('lang')!);
+
+        if(result) {
+            Cookie.set('lang', result, {
+                expires: 30,
+                sameSite: 'strict',
+                secure: false
+            });
+        }
     }
 
     // STEP 2. Detect language from cookie

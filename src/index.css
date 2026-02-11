@@ -1,8 +1,14 @@
+@import 'devicon/devicon-base.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 @import './fonts.css';
 
 
 :root {
     --font-title: 'Paperlogy', 'GMarket Sans', 'Wanted Sans', 'Noto Sans KR', sans-serif;
+
+    --color-gold: #ffcb05;
+    --color-brown: #a07f78;
+    --color-indigo: #80A8FF;
 }
 
 
@@ -21,8 +27,10 @@
     -moz-osx-font-smoothing: grayscale;
 
     scroll-behavior: smooth;
+}
 
-
+* {
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -43,12 +51,8 @@ html, body  {
 body {
     margin: 0;
     display: flex;
-    place-items: center;
-    /*background: linear-gradient(165deg, #121212,*/
-    /*#121212 5%, #202830 20%, #202830 30%, #121212 45%,*/
-    /*#121212 55%, #202830 70%, #202830 80%, #121212 95%); */
     background: repeating-linear-gradient(160deg, #121212,
-        #121212 20vh, #202830 100vh, #202830 140vh, #121212 220vh);
+        #121212 20vh, #303840 100vh, #303840 140vh, #121212 220vh);
 
 }
 
@@ -78,10 +82,6 @@ button {
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
-}
-
-button:hover {
-    border-color: #646cff;
 }
 
 button:focus,
@@ -136,7 +136,11 @@ h6 { font-size: 1rem; }
     h6 { font-size: 1.25rem; }
 }
 
-html:lang(ko) .markdown-content {
-    word-break: keep-all;
-    overflow-wrap: break-word;
+/*html:lang(ko) .markdown-content {*/
+/*    word-break: keep-all;*/
+/*    overflow-wrap: break-word;*/
+/*}*/
+
+html:lang(ja) {
+    font-weight: 300;
 }
