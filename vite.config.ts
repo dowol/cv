@@ -20,7 +20,6 @@ export default defineConfig(({mode}) => {
     } : undefined;
 
     return {
-        base: DEV ? '/' : '/cv/',
         build: {
             // Generate sourcemaps when in dev mode
             sourcemap: DEV
