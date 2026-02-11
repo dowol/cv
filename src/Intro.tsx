@@ -49,7 +49,7 @@ const ProfileImage = styled.img`
 const Greetings = styled.article`
     display: flex;
     flex-flow: column nowrap;
-    max-width: 600px;
+    max-width: 640px;
 
 
     h1 {
@@ -82,18 +82,22 @@ const Greetings = styled.article`
         animation: fade-in .75s ease-out forwards;
 
         strong {
-
+            font-size: 1.125em;
         }
     }
 
     .markdown-content {
         font-size: 1rem;
-        text-align: initial;
+        text-align: center;
 
         @media (min-width: 480px) {
             font-size: 1.25rem;
         }
 
+        @media (min-width: 720px) {
+            text-align: right;
+            margin-right: .5rem;
+        }
 
         @media (min-width: 960px) {
             font-size: 1.5rem;
