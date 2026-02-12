@@ -96,10 +96,6 @@ const TimelineArticle = styled.article`
                 font-size: 1.25rem;
             }
             
-            &:before {
-                content: '-';
-                margin-inline-end: .5em;
-            }
         }
     }
 
@@ -192,7 +188,7 @@ export default function Timeline() {
                                 <h4>
                                     <img src={i.logo}/>
                                     <div>
-                                        <a href={i.url}>{i.title}&nbsp;</a>
+                                        {i.title}
                                     </div>
                                 </h4>
                                 <small>{i.subtitle}</small>
@@ -211,7 +207,7 @@ export default function Timeline() {
                                 <h4>
                                     <img src={i.logo}/>
                                     <div>
-                                        <a href={i.url}>{i.title}&nbsp;</a>
+                                        {i.title}
                                         <small>{i.subtitle}</small>
                                     </div>
                                 </h4>

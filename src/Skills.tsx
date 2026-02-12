@@ -31,6 +31,7 @@ const Article = styled.article`
         grid-template-columns: 2fr 3fr 3fr;
         max-width: 1000px;
         margin: 0 auto;
+        gap: 2.5rem;
     }
 `;
 
