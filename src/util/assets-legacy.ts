@@ -1,7 +1,9 @@
 import {useEffect, useState} from "react";
 
+const RE_DUPESLASH = /\/{2,}/g;
+
 const bodyType = ['formData', 'blob', 'text', 'json'] as const;
-export type BodyType = typeof bodyType[number] | undefined;
+export type BodyType = typeof bodyType[number];
 export type AssetsBodyType = FormData | Blob | string | any;
 
 // export async function getAsset(path: string, type: 'json'): Promise<any>;
@@ -9,12 +11,25 @@ export type AssetsBodyType = FormData | Blob | string | any;
 // export async function getAsset(path: string, type: 'blob'): Promise<Blob>;
 // export async function getAsset(path: string, type: 'text'): Promise<string>;
 export async function getAsset<T extends AssetsBodyType>(path: string, type: BodyType = 'json') : Promise<T> {
-    return fetch(getAssetURL(path))
+    if(type === 'json') {
+        let result: any = {} ;
+
+        const res_iasset = await fetch(getInvariantAssetURL(path));
+        if(res_iasset.ok && res_iasset.headers.get('Content-Type')?.includes('json'))
+            result = await res_iasset.json();
+
+        const res_lasset = await fetch(getAssetURL(path));
+        if(res_lasset.ok && res_lasset.headers.get('Content-Type')?.includes('json'))
+            result = Object.assign(result, await res_lasset.json());
+
+        return result;
+    }
+
+    else return fetch(getAssetURL(path))
         .then(res => {
-            if(res.ok) return res[type]();
+            if(res.ok) return res[type as BodyType]();
             else throw res;
         });
-
 }
 
 export function useAsset(path: string, type: 'json'): any;
@@ -38,6 +53,13 @@ export function getAssetURL(path: string){
     if(isInvariant) path = path.substring(1);
 
     return (import.meta.env.DEV
-        ? `/assets/${lang}/${path}`.replace(/\/{2,}/g, '/')
-        : `https://raw.githubusercontent.com` + `/dowol/dowol/master/cv/${lang}/${path}`.replace(/\/{2,}/g, '/'));
+        ? `/assets/${lang}/${path}`.replace(RE_DUPESLASH, '/')
+        : `https://raw.githubusercontent.com` + `/dowol/dowol/master/cv/${lang}/${path}`.replace(RE_DUPESLASH, '/'));
+}
+
+function getInvariantAssetURL(path: string) {
+    return (import.meta.env.DEV
+        ? `/assets/${path}`.replace(RE_DUPESLASH, '/')
+        : `https://raw.githubusercontent.com` + `/dowol/dowol/master/cv/${path}`.replace(RE_DUPESLASH, '/')
+    );
 }
