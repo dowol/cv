@@ -201,6 +201,11 @@ function PersonalProfile() {
 }
 
 function getShortenedURL(href: string): string {
-    const url = new URL(href);
-    return url.host + url.pathname + url.search;
+    try {
+        const url = new URL(href);
+        return url.host + url.pathname + url.search;
+    }
+    catch(e) {
+        return '';
+    }
 }
