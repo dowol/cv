@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import MarkdownContent from "./Markdown.tsx";
-import {useAsset} from "./util/assets";
+import {useAsset} from "./util/assets-legacy.ts";
 import useMessage from "./util/message.ts";
 import GreetingMessage from "./GreetingMessage.tsx";
 

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {type ReactNode, useCallback, useRef} from "react";
+import {useLanguage} from "./util/lang.ts";
 
 interface NavigationInfo extends Record<string, unknown> {
     href: string;
@@ -225,19 +226,22 @@ const ToggleLanguagesButton = styled.button`
     height: 48px;
     background: transparent;
     padding: 0;
+    margin-right: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    & .iconify {
-        font-size: 2rem;
+    & img {
+        height: 2rem;
     }
 
     color: inherit;
+    border: 1px solid #aaa;
     border-radius: 24px;
+    
 
     &:hover {
-        border-color: white;
+        border-color: #aaa;
     }
 
     &:focus {
@@ -248,6 +252,8 @@ const ToggleLanguagesButton = styled.button`
 
 
 export function Navigator() {
+    const lang = useLanguage();
+
     const aliasesModalRef = useRef<HTMLDialogElement>(null);
     const languagesModalRef = useRef<HTMLDialogElement>(null);
 
@@ -269,8 +275,8 @@ export function Navigator() {
 
     return (
         <Nav>
-            <ToggleLanguagesButton onClick={onOpenLanguages}>
-                <i className={'bi bi-translate'}/>
+            <ToggleLanguagesButton onClick={onOpenLanguages} title={'Click here to Change Language'}>
+                <img src={`/images/lang/${lang}.svg`} alt={'Change Language'}/>
             </ToggleLanguagesButton>
             <ToggleAliasesButton onClick={onOpenAliases}>
                 <i className={'bi bi-list'}/>

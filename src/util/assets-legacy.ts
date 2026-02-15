@@ -14,13 +14,22 @@ export async function getAsset<T extends AssetsBodyType>(path: string, type: Bod
     if(type === 'json') {
         let result: any = {} ;
 
-        const res_iasset = await fetch(getInvariantAssetURL(path));
+        const res_iasset = await fetch(getInvariantAssetURL(path), {cache: 'force-cache'});
         if(res_iasset.ok && res_iasset.headers.get('Content-Type')?.includes('json'))
             result = await res_iasset.json();
 
-        const res_lasset = await fetch(getAssetURL(path));
-        if(res_lasset.ok && res_lasset.headers.get('Content-Type')?.includes('json'))
-            result = Object.assign(result, await res_lasset.json());
+        const res_lasset = await fetch(getAssetURL(path), {cache: 'force-cache'});
+        if(res_lasset.ok && res_lasset.headers.get('Content-Type')?.includes('json')) {
+            const la_result = await res_lasset.json();
+            if(Array.isArray(result) && Array.isArray(la_result)) {
+                result.map(item => {
+                    Object.assign(item, la_result.find(i => i.id === item.id))
+                });
+            }
+            else Object.assign(result, la_result)
+        }
+
+        console.log(`JSON Asset: ${path}`, result);
 
         return result;
     }
