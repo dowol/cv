@@ -2,9 +2,10 @@ import styled from "@emotion/styled";
 import {SectionTitle} from "./Components.tsx";
 import DayjsTime from "./DayjsTime.tsx";
 import {useModifier} from "./util/grammatics.tsx";
-import {useAsset} from "./util/assets.ts";
+import {useAsset} from "./util/assets-legacy.ts";
 import MarkdownContent from "./Markdown.tsx";
 import useMessage from "./util/message.ts";
+import type {TimelineInfo} from "./data.ts";
 
 const Section = styled.section`
 
@@ -157,18 +158,7 @@ function Period(props: PeriodProps) {
     )
 }
 
-interface TimelineInfo {
-    category: 'education' | 'work';
-    title: string;
-    subtitle?: string;
-    logo?: string;
-    url?: string;
-    period: {
-        begin: string;
-        end: string;
-    };
-    description?: string;
-}
+
 
 export default function Timeline() {
 

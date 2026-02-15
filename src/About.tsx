@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import {SectionTitle} from "./Components.tsx";
 import MarkdownContent from "./Markdown.tsx";
-import {useAsset} from "./util/assets.ts";
+import {useAsset} from "./util/assets-legacy.ts";
 import DayjsTime from "./DayjsTime.tsx";
 import useMessage from "./util/message.ts";
 

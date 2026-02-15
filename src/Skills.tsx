@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import {SectionTitle} from "./Components.tsx";
-import {useAsset} from "./util/assets.ts";
+import {useAsset} from "./util/assets-legacy.ts";
 import useMessage from "./util/message.ts";
+import type {SkillsInfo} from "./data.ts";
 
 const Section = styled.section`
     display: flex;
@@ -110,12 +111,6 @@ const SkillsListItem = styled.li`
 `;
 
 
-interface SkillsInfo {
-    id: string;
-    category: string;
-    name: string;
-    icon: string;
-}
 
 function SkillsItem({category, name, icon} : SkillsInfo) {
     const subCategory = category.startsWith('dev/')
@@ -134,7 +129,7 @@ function SkillsItem({category, name, icon} : SkillsInfo) {
 
 function SkillsArticle(){
 
-    const skills = useAsset('@skills.json', 'json') as SkillsInfo[];
+    const skills = useAsset('skills.json', 'json') as SkillsInfo[];
 
 
     return (
@@ -148,7 +143,7 @@ function SkillsArticle(){
             <SkillsCategoryArticle>
                 <h3>Development Solutions</h3>
                 <SkillsList>
-                    {skills?.filter(skill => skill.category.startsWith('dev/')).map(skill => <SkillsItem key={skill.id} {...skill}/>)}
+                    {skills?.filter(skill => skill.category?.startsWith('dev/')).map(skill => <SkillsItem key={skill.id} {...skill}/>)}
                 </SkillsList>
             </SkillsCategoryArticle>
             <SkillsCategoryArticle>

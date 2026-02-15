@@ -5,6 +5,8 @@ import Main from './Main.tsx';
 import {useLanguage} from "./util/lang.ts";
 import dayjs from "dayjs";
 import {Copyright} from "./Footer.tsx";
+import {QueryClientProvider} from '@tanstack/react-query';
+import queryClient from "./util/query.ts";
 
 const Header = styled.header`
     display: flex;    
@@ -50,7 +52,7 @@ function App() {
     dayjs.locale(lang);
 
     return (
-        <>
+        <QueryClientProvider client={queryClient}>
             <Header>
                 <div>
                     <BrandLogo/>
@@ -61,7 +63,7 @@ function App() {
             <Footer>
                 <Copyright/>
             </Footer>
-        </>
+        </QueryClientProvider>
     )
 }
 
