@@ -26,5 +26,11 @@ dist-ssr
 # Dotenv
 .env
 .env.*
+!.env.sample
+!.env.*.sample
 
+# Resorces for dev builds
 public/assets/
+
+# Compiled locale target
+src/locales/*.ts

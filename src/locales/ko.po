@@ -1,0 +1,75 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-03-28 17:12+0900\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ko\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/sections/PersonalProfile.tsx:64
+msgid "Birthday"
+msgstr "생년월일"
+
+#: src/sections/Timeline.tsx:207
+msgid "Career"
+msgstr "경력"
+
+#: src/sections/Timeline.tsx:150
+#: src/sections/Timeline.tsx:161
+msgid "Current"
+msgstr "현재"
+
+#: src/sections/PersonalProfile.tsx:72
+msgid "E-mail"
+msgstr "이메일"
+
+#: src/sections/Timeline.tsx:189
+msgid "Education"
+msgstr "학력"
+
+#: src/sections/Timeline.tsx:148
+msgid "Entered <0/>"
+msgstr "<0/> 입학"
+
+#: src/sections/PersonalProfile.tsx:68
+msgid "GitHub"
+msgstr ""
+
+#: src/sections/Timeline.tsx:150
+msgid "Graduated <0/>"
+msgstr "<0/> 졸업"
+
+#: src/sections/Intro.tsx:117
+msgid "Hello<0/> I am <1>Dowol</1><2/> the Developer"
+msgstr "안녕하세요<0/> 개발자 <1>도월</1>입니다"
+
+#: src/sections/About.tsx:15
+msgid "I am a junior developer"
+msgstr "저는 주니어 개발자에요"
+
+#: src/sections/Intro.tsx:123
+msgid "I am focusing on Web Full-stack and Windows App development. I wish to be a developer who learn & apply diverse programming knowledge and skills in real situations, thereby enhancing productivity and user experiences."
+msgstr "웹 풀스택 개발과 Windows 앱 개발을 주력으로, 다양한 프로그래밍 지식과 기술을 끊임없이 배우고 실전에 적용하며 프로그램의 생산성을 향상시키고 좋은 UI/UX를 제공하는 개발자를 지향합니다."
+
+#: src/sections/Timeline.tsx:171
+msgid "I've grown up with these"
+msgstr "저는 이렇게 성장했어요"
+
+#: src/sections/Timeline.tsx:159
+msgid "Joined <0/>"
+msgstr "<0/> 입사"
+
+#: src/sections/PersonalProfile.tsx:60
+msgid "Name"
+msgstr "이름"
+
+#: src/sections/Timeline.tsx:161
+msgid "Resigned <0/>"
+msgstr "<0/> 퇴사"
