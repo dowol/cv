@@ -145,9 +145,9 @@ interface PeriodProps {
 function EducationPeriod({begin, end}: PeriodProps) {
     return (
         <PeriodPara>
-            <Trans>Entered <Time dateTime={begin} format={'ll'}/></Trans>
+            <span><Trans>Entered <Time dateTime={begin} format={'ll'}/></Trans></span>
             <PeriodArrow>&nbsp;&rarr;&nbsp;</PeriodArrow>
-            {end ? <Trans>Graduated <Time dateTime={end} format={'ll'}/></Trans> : <Trans>Current</Trans>}
+            <span>{end ? <Trans>Graduated <Time dateTime={end} format={'ll'}/></Trans> : <Trans>Current</Trans>}</span>
         </PeriodPara>
     )
 }
@@ -156,9 +156,9 @@ function EducationPeriod({begin, end}: PeriodProps) {
 function CareerPeriod({begin, end}: PeriodProps) {
     return (
         <PeriodPara>
-            <Trans>Joined <Time dateTime={begin} format={'ll'}/></Trans>
+            <span><Trans>Joined <Time dateTime={begin} format={'ll'}/></Trans></span>
             <PeriodArrow>&nbsp;&rarr;&nbsp;</PeriodArrow>
-            {end ? <Trans>Resigned <Time dateTime={end} format={'ll'}/></Trans> : <Trans>Current</Trans>}
+            <span>{end ? <Trans>Resigned <Time dateTime={end} format={'ll'}/></Trans> : <Trans>Current</Trans>}</span>
         </PeriodPara>
     )
 }
