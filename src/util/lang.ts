@@ -1,8 +1,8 @@
 import Cookie from 'js-cookie';
 
-export const locales = ['ko', 'en', 'ja', 'fr'] as const;
+export const locales = ['ko', 'en'] as const;
 
-export const sourceLocale = 'en'!;
+export const sourceLocale = 'en';
 
 export type Locales = typeof locales[number];
 
