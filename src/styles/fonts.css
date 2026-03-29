@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'Wanted Sans';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400 1000;
+    src: url('/fonts/WantedSansVariable.woff2') format('woff2-variations');
+}
+
+@font-face {
+    font-family: 'Wanted Sans Std';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400 1000;
+    src: url('/fonts/WantedSansStdVariable.woff2') format('woff2-variations');
+}
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('/fonts/NotoSansJP.ttf') format('truetype-variations');
+}
+
+@font-face {
+    font-family: 'Fira Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/FiraMonoRegular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Paperlogy';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url('/fonts/PaperlogyThin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Paperlogy';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/PaperlogyRegular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Paperlogy';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/PaperlogyBold.ttf') format('truetype');
+}
+
+* {
+    font-family: 'Wanted Sans Std', sans-serif;
+}
+
+:lang(ko){
+    font-family: 'Wanted Sans', 'Noto Sans KR', sans-serif;
+}
+
+:lang(ja){
+    font-family: 'Wanted Sans Std', 'Noto Sans JP', sans-serif;
+}
