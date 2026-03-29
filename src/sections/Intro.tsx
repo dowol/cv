@@ -18,7 +18,6 @@ const Heading = styled.h1`
 
     @media (min-width: 720px) {
         text-align: right;
-        margin-right: 1rem;
     }
 
     @media (min-width: 840px) {
@@ -80,6 +79,13 @@ const ProfileImage = styled.img`
 const Greetings = styled.article`
     display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
+    
+    @media (min-width: 720px) {
+        align-items: flex-end;
+        margin-right: 1rem;
+    }
+    
     max-width: 640px;
 
     p {
@@ -91,7 +97,7 @@ const Greetings = styled.article`
         }
 
         @media (min-width: 720px) {
-            margin-right: .5rem;
+            font-size: 1.375rem;
         }
 
         @media (min-width: 960px) {

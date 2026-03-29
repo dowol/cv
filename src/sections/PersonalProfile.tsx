@@ -12,7 +12,6 @@ const Section = styled.section`
     border-radius: .625rem;
     background-color: rgba(128, 128, 128, 25%);
     
-    width: 80%;
 
     @media (min-width: 640px) {
         align-self: center;
