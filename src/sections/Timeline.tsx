@@ -79,7 +79,6 @@ const TimelineArticle = styled.article`
                         text-decoration: 1px solid underline;
                     }
                 }
-
             }
         }
 
@@ -90,17 +89,14 @@ const TimelineArticle = styled.article`
         }
 
         small {
-            display: block;
+            display: inline-flex;
+            flex-flow: row wrap;
+            column-gap: 1rem;
             color: #bbb;
             font-size: 1rem;
-
+            
             @media (min-width: 720px) {
-                font-size: 1.25rem;
-            }
-
-            &:before {
-                content: '-';
-                margin-inline-end: .5em;
+                font-size: 1.125rem;
             }
         }
     }
@@ -176,7 +172,7 @@ export default function Timeline() {
 }
 
 function TimelineDetails() {
-    const {data, isPending, error} = useQuery<TimelineInfo[]>({
+    const {data, isPending, error} = useQuery<(TimelineInfo & Record<string, string>)[]>({
         queryKey: ['timeline'],
         queryFn: () => local('timeline.json', 'json'),
     });
@@ -196,7 +192,9 @@ function TimelineDetails() {
                                         <a href={i.url}>{i.title}&nbsp;</a>
                                     </div>
                                 </h4>
-                                <small>{i.subtitle}</small>
+                                <small>
+                                    <span><i className={'bi bi-pencil'}/> {i.major}</span>
+                                </small>
                                 <EducationPeriod begin={i.period.begin} end={i.period.end}/>
                                 {i.description && (<ReactMarkdown>{i.description}</ReactMarkdown>)}
                             </article>
@@ -212,7 +210,11 @@ function TimelineDetails() {
                                     <img src={i.logo}/>
                                     <div>
                                         <a href={i.url}>{i.title}&nbsp;</a>
-                                        <small>{i.subtitle}</small>
+                                        <small>
+                                            <span><i className={'bi bi-wrench-adjustable'}/> {i.duty}</span>
+                                            <span><i className={'bi bi-calendar3'}/> {i.contract}</span>
+                                            <span><i className={'bi bi-geo-alt'}/> {i.location}</span>
+                                        </small>
                                     </div>
                                 </h4>
                                 <CareerPeriod begin={i.period.begin} end={i.period.end}/>
