@@ -1,10 +1,16 @@
 import Cookie from 'js-cookie';
 
-export const locales = ['ko', 'en'] as const;
-
-export const sourceLocale = 'en';
+export const locales = [
+    'en', // English
+    'ko', // 한국어
+    'fr', // Français
+    'ja', // 日本語
+] as const;
 
 export type Locales = typeof locales[number];
+
+export const sourceLocale = locales[0] as Locales;
+
 
 function fallback(lang: string): Locales | undefined {
     lang = lang.toLowerCase();
