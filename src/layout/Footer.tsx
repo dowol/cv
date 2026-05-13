@@ -1,6 +1,4 @@
 import styled from '@emotion/styled';
-import {version} from '../../package.json' with {type: 'json'};
-import Time from '../components/Time.tsx';
 
 const Container = styled.footer`
     display: flex;
@@ -33,8 +31,6 @@ export default function Footer(){
             <p className={'copyright'}>
                 Copyright 2026 Dowol. All rights reserved.
             </p>
-
-            <p>Last update: <Time dateTime={version} format={'YYYY-MM-DD'}/></p>
         </Container>
     )
 }
