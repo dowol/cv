@@ -225,17 +225,25 @@ const ToggleLanguagesButton = styled.button`
     height: 48px;
     background: transparent;
     padding: 0;
-    margin-right: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    @media (min-width: 720px) {
+        margin-right: 2rem;
+    }
+    
 
     & img {
         height: 2rem;
     }
 
     color: inherit;
-    border: 1px solid #aaa;
+    
+    &:focus {
+        border: 1px solid #aaa;
+    }
+    
     border-radius: 24px;
 
 

@@ -8,7 +8,7 @@ const Container = styled.main`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-
+    
     & > section {
         padding: 0 1rem;
         min-height: calc(100vh - 4rem);
