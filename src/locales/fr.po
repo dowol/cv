@@ -24,7 +24,7 @@ msgstr "carrière"
 #: src/sections/Timeline.tsx:150
 #: src/sections/Timeline.tsx:161
 msgid "Current"
-msgstr ""
+msgstr "maintenant"
 
 #: src/sections/PersonalProfile.tsx:72
 msgid "E-mail"
@@ -40,7 +40,7 @@ msgstr "éducation"
 
 #: src/sections/Timeline.tsx:148
 msgid "Entered <0/>"
-msgstr ""
+msgstr "entrée le <0/>"
 
 #: src/sections/PersonalProfile.tsx:68
 msgid "GitHub"
@@ -57,7 +57,7 @@ msgstr ""
 
 #: src/sections/Timeline.tsx:150
 msgid "Graduated <0/>"
-msgstr ""
+msgstr "diplômé le <0/>"
 
 #: src/sections/Intro.tsx:117
 msgid "Hello<0/> I am <1>Dowol</1><2/> the Developer"
@@ -65,7 +65,7 @@ msgstr "Enchanté<0/> Je suis <1>Dowol</1><2/> le développeur"
 
 #: src/sections/About.tsx:15
 msgid "I am a junior developer"
-msgstr ""
+msgstr "Je suis un développeur junior"
 
 #: src/sections/Intro.tsx:123
 msgid "I am focusing on Web Full-stack and Windows App development. I wish to be a developer who learn & apply diverse programming knowledge and skills in real situations, thereby enhancing productivity and user experiences."
@@ -73,7 +73,7 @@ msgstr "Je me spécialise dans le développement web full-stack et le développe
 
 #: src/sections/Timeline.tsx:171
 msgid "I've grown up with these"
-msgstr ""
+msgstr "J'ai grandi avec ça"
 
 #: src/util/messages.ts:13
 #~ msgid "Joined"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: src/sections/Timeline.tsx:159
 msgid "Joined <0/>"
-msgstr ""
+msgstr "rejoint le <0/>"
 
 #: src/sections/PersonalProfile.tsx:60
 msgid "Name"
@@ -97,4 +97,4 @@ msgstr "Nom"
 
 #: src/sections/Timeline.tsx:161
 msgid "Resigned <0/>"
-msgstr ""
+msgstr "démissionné le <0/>"

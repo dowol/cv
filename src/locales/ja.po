@@ -34,30 +34,17 @@ msgstr "メール"
 msgid "Education"
 msgstr "学歴"
 
-#: src/util/messages.ts:11
-#~ msgid "Entered"
-#~ msgstr "入学"
-
 #: src/sections/Timeline.tsx:148
 msgid "Entered <0/>"
-msgstr ""
+msgstr "<0/> 入学"
 
 #: src/sections/PersonalProfile.tsx:68
 msgid "GitHub"
 msgstr ""
 
-#: src/sections/PersonalProfile.tsx:73
-#: src/util/messages.ts:9
-#~ msgid "GitLab"
-#~ msgstr ""
-
-#: src/util/messages.ts:12
-#~ msgid "Graduated"
-#~ msgstr "卒業"
-
 #: src/sections/Timeline.tsx:150
 msgid "Graduated <0/>"
-msgstr ""
+msgstr "<0/> 卒業"
 
 #: src/sections/Intro.tsx:117
 msgid "Hello<0/> I am <1>Dowol</1><2/> the Developer"
@@ -75,26 +62,14 @@ msgstr "ウェブ開発とWindowsアプリの開発を主に、様々なプロ�
 msgid "I've grown up with these"
 msgstr ""
 
-#: src/util/messages.ts:13
-#~ msgid "Joined"
-#~ msgstr "入社"
-
 #: src/sections/Timeline.tsx:159
 msgid "Joined <0/>"
-msgstr ""
+msgstr "<0/> 入社"
 
 #: src/sections/PersonalProfile.tsx:60
 msgid "Name"
 msgstr "名前"
 
-#: src/util/messages.ts:4
-#~ msgid "Profile"
-#~ msgstr "プロフィール"
-
-#: src/util/messages.ts:14
-#~ msgid "Resigned"
-#~ msgstr "退社"
-
 #: src/sections/Timeline.tsx:161
 msgid "Resigned <0/>"
-msgstr ""
+msgstr "<0/> 退社"
